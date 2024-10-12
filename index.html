@@ -4,34 +4,163 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CS 4700 Artificial Intelligence</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        html, body {
+            height: 100%;
             margin: 0;
             padding: 0;
+        }
+        body {
+            font-family: Arial, sans-serif;
             background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background-color: #b22222; /* Softened red */
+            color: white;
+            padding: 20px;
             text-align: center;
         }
-        .container {
-            padding: 50px;
+        .subheader {
+            font-size: 1.2em;
+            color: #f4f4f4;
+            margin-top: -10px;
         }
-        h1 {
-            color: #333;
+        .main {
+            flex: 1;
+            padding: 20px;
         }
         .footer {
-            margin-top: 50px;
-            color: #aaa;
+            background-color: #b22222; /* Softened red */
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        a {
+            color: #b22222; /* Softened red */
+        }
+        .lectures table th, .lectures table td {
+            vertical-align: middle;
+        }
+        h4 {
+            color: #666; /* Lightened text color */
         }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="header">
         <h1>CS 4700: Artificial Intelligence</h1>
-        <p>Welcome to the course webpage!</p>
-        <p>Content will be added soon.</p>
-        <div class="footer">
-            <p>University of Central Missouri</p>
+        <div class="subheader">Spring 2025</div>
+    </div>
+    <div class="container main mt-4">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="course-info-tab" data-toggle="tab" href="#course-info" role="tab" aria-controls="course-info" aria-selected="true">Course Information</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="lecture-schedule-tab" data-toggle="tab" href="#lecture-schedule" role="tab" aria-controls="lecture-schedule" aria-selected="false">Lecture Schedule</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="homeworks-tab" data-toggle="tab" href="#homeworks" role="tab" aria-controls="homeworks" aria-selected="false">Homeworks</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="class-policy-tab" data-toggle="tab" href="#class-policy" role="tab" aria-controls="class-policy" aria-selected="false">Class Policy</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="course-info" role="tabpanel" aria-labelledby="course-info-tab">
+                <h2>Course Information</h2>
+                <p><a href="#">Course Syllabus</a></p>
+                <div>
+                    <h4>Course Staff</h4>
+                    <p><a href="#">Dr. Tyler Banks</a> - <a href="mailto:tylerbanks@ucmo.edu">tylerbanks@ucmo.edu</a></p>
+                </div>
+                <div>
+                    <h4>Example Subsection</h4>
+                    <p>Details about this section could include weekly topics, office hours, or grading policies.</p>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="lecture-schedule" role="tabpanel" aria-labelledby="lecture-schedule-tab">
+                <h2>Lecture Schedule</h2>
+                <div class="lectures mt-4">
+                    <table class="table table-striped">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Lecture</th>
+                                <th>Date</th>
+                                <th>Topics/Slides</th>
+                                <th>Readings</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Lecture 1</td>
+                                <td>01/14/2025</td>
+                                <td><a href="#">Slides</a></td>
+                                <td><a href="#">Readings</a></td>
+                            </tr>
+                            <tr>
+                                <td>Lecture 2</td>
+                                <td>01/16/2025</td>
+                                <td><a href="#">Slides</a></td>
+                                <td><a href="#">Readings</a></td>
+                            </tr>
+                            <!-- Add more as needed -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="homeworks" role="tabpanel" aria-labelledby="homeworks-tab">
+                <h2>Homeworks</h2>
+                <div class="lectures mt-4">
+                    <table class="table table-striped">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Number</th>
+                                <th>Assignment</th>
+                                <th>Due Date</th>
+                                <th>Answers</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Homework 1</td>
+                                <td><a href="#">Agent Search</a></td>
+                                <td><a href="#">01/28/2025</a></td>
+                                <td><a href="#">Answer Key</a></td>
+                            </tr>
+                            <tr>
+                                <td>Homework 2</td>
+                                <td><a href="#">Naive Bayes</a></td>
+                                <td><a href="#">02/28/2025</a></td>
+                                <td><a href="#">Answer Key</a></td>
+                            </tr>
+                            <!-- Add more as needed -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="class-policy" role="tabpanel" aria-labelledby="class-policy-tab">
+                <h2>Class Policy</h2>
+                <div>
+                    <h4>Stuff</h4>
+                    <p><a href="#">Dr. Tyler Banks</a> - <a href="mailto:tylerbanks@ucmo.edu">tylerbanks@ucmo.edu</a></p>
+                </div>
+                <div>
+                    <h4>Things</h4>
+                    <p>Details about this section could include weekly topics, office hours, or grading policies.</p>
+                </div>
+            </div>
         </div>
     </div>
+    <div class="footer mt-4">
+        <p>University of Central Missouri</p>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
