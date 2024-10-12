@@ -48,6 +48,31 @@
         h4 {
             color: #666; /* Lightened text color */
         }
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .lectures table thead {
+                display: none;
+            }
+            .lectures table tr {
+                display: block;
+                margin-bottom: 20px;
+            }
+            .lectures table td {
+                display: block;
+                text-align: right;
+                position: relative;
+                padding-left: 50%;
+            }
+            .lectures table td::before {
+                content: attr(data-label);
+                position: absolute;
+                left: 0;
+                width: 50%;
+                padding-left: 15px;
+                font-weight: bold;
+                text-align: left;
+            }
+        }
     </style>
 </head>
 <body>
@@ -61,7 +86,7 @@
                 <a class="nav-link active" id="course-info-tab" data-toggle="tab" href="#course-info" role="tab" aria-controls="course-info" aria-selected="true">Course Information</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="lecture-schedule-tab" data-toggle="tab" href="#lecture-schedule" role="tab" aria-controls="lecture-schedule" aria-selected="false">Lecture Schedule</a>
+                <a class="nav-link" id="lecture-schedule-tab" data-toggle="tab" href="#lecture-schedule" role="tab" aria-controls="lecture-schedule" aria-selected="false">Schedule</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" id="homeworks-tab" data-toggle="tab" href="#homeworks" role="tab" aria-controls="homeworks" aria-selected="false">Homeworks</a>
@@ -76,7 +101,7 @@
                 <p><a href="#">Course Syllabus</a></p>
                 <div>
                     <h4>Course Staff</h4>
-                    <p><a href="#">Dr. Tyler Banks</a> - <a href="mailto:tylerbanks@ucmo.edu">tylerbanks@ucmo.edu</a></p>
+                    <p><a href="https://tylerbanks.net/assets/Tyler_Banks_CV_Latest.pdf">Dr. Tyler Banks</a> - <a href="mailto:tylerbanks@ucmo.edu">tylerbanks@ucmo.edu</a></p>
                 </div>
                 <div>
                     <h4>Example Subsection</h4>
@@ -84,12 +109,12 @@
                 </div>
             </div>
             <div class="tab-pane fade" id="lecture-schedule" role="tabpanel" aria-labelledby="lecture-schedule-tab">
-                <h2>Lecture Schedule</h2>
+                <h2>Schedule</h2>
                 <div class="lectures mt-4">
                     <table class="table table-striped">
                         <thead class="thead-dark">
                             <tr>
-                                <th>Lecture</th>
+                                <th>Number</th>
                                 <th>Date</th>
                                 <th>Topics/Slides</th>
                                 <th>Readings</th>
@@ -97,16 +122,16 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Lecture 1</td>
-                                <td>01/14/2025</td>
-                                <td><a href="#">Slides</a></td>
-                                <td><a href="#">Readings</a></td>
+                                <td data-label="Number">Lecture 1</td>
+                                <td data-label="Date">01/14/2025</td>
+                                <td data-label="Topics/Slides"><a href="#">Slides</a></td>
+                                <td data-label="Readings">Readings</td>
                             </tr>
                             <tr>
-                                <td>Lecture 2</td>
-                                <td>01/16/2025</td>
-                                <td><a href="#">Slides</a></td>
-                                <td><a href="#">Readings</a></td>
+                                <td data-label="Number">Lecture 2</td>
+                                <td data-label="Date">01/16/2025</td>
+                                <td data-label="Topics/Slides"><a href="#">Slides</a></td>
+                                <td data-label="Readings">Readings</td>
                             </tr>
                             <!-- Add more as needed -->
                         </tbody>
@@ -127,16 +152,16 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Homework 1</td>
-                                <td><a href="#">Agent Search</a></td>
-                                <td><a href="#">01/28/2025</a></td>
-                                <td><a href="#">Answer Key</a></td>
+                                <td data-label="Number">Homework 1</td>
+                                <td data-label="Assignment"><a href="#">Agent Search</a></td>
+                                <td data-label="Due Date">01/28/2025</td>
+                                <td data-label="Answers"><a href="#">Answer Key</a></td>
                             </tr>
                             <tr>
-                                <td>Homework 2</td>
-                                <td><a href="#">Naive Bayes</a></td>
-                                <td><a href="#">02/28/2025</a></td>
-                                <td><a href="#">Answer Key</a></td>
+                                <td data-label="Number">Homework 2</td>
+                                <td data-label="Assignment"><a href="#">Naive Bayes</a></td>
+                                <td data-label="Due Date">02/28/2025</td>
+                                <td data-label="Answers"><a href="#">Answer Key</a></td>
                             </tr>
                             <!-- Add more as needed -->
                         </tbody>
@@ -162,5 +187,18 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var url = document.location.toString();
+            if (url.match('#')) {
+                $('.nav-tabs a[href="#' + url.split('#')[1] + '"]').tab('show');
+            } 
+            $('.nav-tabs a').on('shown.bs.tab', function (e) {
+                var hash = e.target.hash;
+                var newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + hash;
+                history.replaceState(null, null, newUrl);
+            });
+        });
+    </script>
 </body>
 </html>
